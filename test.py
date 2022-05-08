@@ -79,12 +79,26 @@ def joc_user_0(tabla):
         print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
         tabla = [rand1, rand2, rand3]
         game1 = False
+        return tabla
             
-tabla = joc_user_0(tabla)   
-    
+tabla = joc_user_0(tabla) 
 
+def joc_incheiat(tabla):
+    rand3_x = ["[x]", "[x]", "[x]"]
+    rand2_x = ["[x]", "[x]", "[x]"]
+    rand1_x = ["[x]", "[x]", "[x]"]
+    oblic_x_1 = [rand3_x[0], rand2_x[1], rand1_x[2]]
+    oblic_x_2 = [rand1_x[0], rand2_x[1], rand3_x[2]]
+    tabla_x = [rand1_x, rand2_x, rand3_x, oblic_x_1,oblic_x_2]
 
-
-
-
-
+    rand3_0 = ["[o]", "[o]", "[o]"]
+    rand2_0 = ["[o]", "[o]", "[o]"]
+    rand1_0 = ["[o]", "[o]", "[o]"]
+    oblic_0_1 = [rand3_0[0], rand2_0[1], rand1_0[2]]
+    oblic_0_2 = [rand1_0[0], rand2_0[1], rand3_0[2]]
+    tabla_0 = [rand1_0, rand2_0, rand3_0, oblic_0_1, oblic_0_2]
+    for prim_x in tabla:
+        if prim_x == tabla_x[prim_x]:
+            print("prim_X")
+        else:
+            joc_user_X(tabla)
