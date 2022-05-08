@@ -1,17 +1,17 @@
-
+import os
 # Creeare si rulare joc
 rand3 = ["[_]", "[_]", "[_]"]
 rand2 = ["[_]", "[_]", "[_]"]
 rand1 = ["[_]", "[_]", "[_]"]
 tabla = [rand1, rand2, rand3]
-
-def joc_user_X(tabla):
-
+mark_x = "[x]"
+mark_o = "[o]"
+empty_box = "[_]"
+def push_x(tabla,mark_x):
+    """Jocul pt X"""
     print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
     tabel_nr = ["1", "2", "3"]
     tabel_lit = ["a", "b", "c"]
-    mark_X = "[x]"
-    mark_0 = "[o]"
     game1 = True
     cuvant1 = True
     while game1:
@@ -36,20 +36,18 @@ def joc_user_X(tabla):
         
         tabla = tabla[first_digit - 1]
         tabla[sec_digit] = len(tabla) - sec_digit
-        tabla[sec_digit] = mark_X
+        tabla[sec_digit] = mark_x
         tabla = [rand1, rand2, rand3]
         print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
         tabla = [rand1, rand2, rand3]
         game1 = False
         return tabla
 
-tabla = joc_user_X(tabla)
 
-
-def joc_user_0(tabla):
+def push_o(tabla, mark_o):
+    """Jocul pt 0"""
     tabel_nr = ["1", "2", "3"]
     tabel_lit = ["a", "b", "c"]
-    mark_0 = "[o]"
     game1 = True
     cuvant1 = True
 
@@ -75,30 +73,40 @@ def joc_user_0(tabla):
         
         tabla = tabla[first_digit - 1]
         tabla[sec_digit] = len(tabla) - sec_digit
-        tabla[sec_digit] = mark_0
+        tabla[sec_digit] = mark_o
         print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
         tabla = [rand1, rand2, rand3]
         game1 = False
         return tabla
             
-tabla = joc_user_0(tabla) 
+ 
 
-def joc_incheiat(tabla):
+def joc(tabla,mark_x,mark_o, empty_box):
+    """Castigator sau remiza"""
     rand3_x = ["[x]", "[x]", "[x]"]
     rand2_x = ["[x]", "[x]", "[x]"]
     rand1_x = ["[x]", "[x]", "[x]"]
+    cola_x = [rand1_x[0], rand2_x[0], rand3_x[0]]
+    colb_x = [rand1_x[1], rand2_x[1], rand3_x[1]]
+    colc_x = [rand1_x[2], rand2_x[2], rand3_x[2]]
     oblic_x_1 = [rand3_x[0], rand2_x[1], rand1_x[2]]
     oblic_x_2 = [rand1_x[0], rand2_x[1], rand3_x[2]]
-    tabla_x = [rand1_x, rand2_x, rand3_x, oblic_x_1,oblic_x_2]
+    tabla_x = [rand1_x, rand2_x, rand3_x, cola_x, colb_x, colc_x ,oblic_x_1,oblic_x_2]
 
-    rand3_0 = ["[o]", "[o]", "[o]"]
-    rand2_0 = ["[o]", "[o]", "[o]"]
-    rand1_0 = ["[o]", "[o]", "[o]"]
-    oblic_0_1 = [rand3_0[0], rand2_0[1], rand1_0[2]]
-    oblic_0_2 = [rand1_0[0], rand2_0[1], rand3_0[2]]
-    tabla_0 = [rand1_0, rand2_0, rand3_0, oblic_0_1, oblic_0_2]
-    for prim_x in tabla:
-        if prim_x == tabla_x[prim_x]:
-            print("prim_X")
-        else:
-            joc_user_X(tabla)
+    rand3_o = ["[o]", "[o]", "[o]"]
+    rand2_o = ["[o]", "[o]", "[o]"]
+    rand1_o = ["[o]", "[o]", "[o]"]
+    cola_o = [rand1_o[0], rand2_o[0], rand3_o[0]]
+    colb_o = [rand1_o[1], rand2_o[1], rand3_o[1]]
+    colc_o = [rand1_o[2], rand2_o[2], rand3_o[2]]
+    oblic_o_1 = [rand3_o[0], rand2_o[1], rand1_o[2]]
+    oblic_o_2 = [rand1_o[0], rand2_o[1], rand3_o[2]]
+    tabla_o = [rand1_o, rand2_o, cola_o, colb_o, colc_o,rand3_o, oblic_o_1, oblic_o_2]
+    game0 = True
+    while game0:
+        for a in tabla:
+            if mark_x not in tabla:
+                push_x(tabla, mark_x)
+
+joc(tabla,mark_x,mark_o, empty_box)
+
