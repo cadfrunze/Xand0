@@ -13,21 +13,27 @@ def joc():
     mark_X = "[x]"
     mark_0 = "[o]"
     game1 = True
+    cuvant1 = True
     while game1:
-        xul = input(f" introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
+        if cuvant1 == True:
+            xul = input(f" introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
         if xul[0] not in tabel_nr:
-            print(f" Hey!, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ")
+            xul = input(f" Hey!, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ")
+            cuvant1 = False
             continue
         elif xul[1] not in tabel_lit:
-            print(f" Hey!, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ")
+            xul = input(f" Hey!, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ")
+            cuvant1 = False
             continue
-        elif xul[1] == "a":
+        cuvant1 = True
+        first_digit = int(xul[0])
+        if xul[1] == "a":
             sec_digit = 0
         elif xul[1] == "b":
             sec_digit = 1
         elif xul[1] == "c":
             sec_digit = 2
-        first_digit = int(xul[0])
+        
         tabla = tabla[first_digit - 1]
         tabla[sec_digit] = len(tabla) - sec_digit
         tabla[sec_digit] = mark_X
