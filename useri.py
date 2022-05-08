@@ -8,7 +8,7 @@ user2 = ""
 lista_useri = []
 # Innregistrare useri
 def useri():
-    necenzurat = ["Pula", "Pizda", "Puta", "Coi", "Coaie", "Sugaci", "Sugi", "Suji", "Tampit", "Fuck", "Laba",]
+    necenzurat = ["Pula", "Pulla", "Pizda", "Puta", "Coi", "Coaie", "Sugaci", "Sugi", "Suji", "Tampit", "Fuck", "Laba",]
     semne = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "`", "-", "=", "\"", ";", "'", ",", ".",
             "~", "@", "#", "$", "%", "^", "&" ,"*", "(", ")", "_", "+", "[", "]", "{", "}", "|", ":", "<", ">", "?", "/", " "]
     user_proba = ""
@@ -91,7 +91,7 @@ def useri():
                 if incercari < 2:
                     os.system('cls')
                     user_proba = ""
-                    user2 = input("Hey!, vezi ca ai scris o injuratura, scrieti un nume si gata! >>> ").capitalize()
+                    user2 = input("Hmmm..., vezi ca ai scris o injuratura, scrieti un nume si gata! >>> ").capitalize()
                     incercari = incercari + 1
                     continue
                 elif incercari == 2:
