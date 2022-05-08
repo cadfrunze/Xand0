@@ -1,6 +1,7 @@
 
 import random
 import os
+import time
 
 user1 = ""
 user2 = ""
@@ -129,12 +130,18 @@ def useri():
             "user_X": random.choice(lista_useri),
             }
         if useri_dict["user_X"] == user1:
-            useri_dict["user_0"] = user2
+            useri_dict["user_X"] = [user1, 0]
+            useri_dict["user_0"] = [user2, 0]
         elif useri_dict["user_X"] == user2:
-            useri_dict["user_0"] = user1
+            useri_dict["user_X"] = [user2, 0]
+            useri_dict["user_0"] = [user1, 0]
         return useri_dict
+os.system('cls')
 
-user_dict = useri()
+useri_dict = useri()
+print(f"Primul care incepe este {useri_dict['user_X'][0]}, iar apoi {useri_dict['user_0'][0]}")
+time.sleep(5)
+
 
 
 
