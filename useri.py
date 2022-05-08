@@ -1,3 +1,4 @@
+
 import random
 import os
 
@@ -132,7 +133,9 @@ def useri():
         elif useri_dict["user_X"] == user2:
             useri_dict["user_0"] = user1
         return useri_dict
-print(useri())
+
+user_dict = useri()
+
 
 
 
