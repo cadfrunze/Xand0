@@ -7,6 +7,7 @@ tabla = [rand1, rand2, rand3]
 mark_x = "[x]"
 mark_o = "[o]"
 empty_box = "[_]"
+list_incercari = []
 def push_x(tabla,mark_x):
     """Jocul pt X"""
     print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
@@ -18,11 +19,11 @@ def push_x(tabla,mark_x):
         if cuvant1 == True:
             xul = input(f" introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
         if xul[0] == "" or xul[0] == "" or xul[0] not in tabel_nr:
-            xul = input(f" Hey!, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ")
+            xul = input(f" Hey!, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
             cuvant1 = False
             continue
         elif xul[1] == "" or xul[1] == " " or xul[1] not in tabel_lit:
-            xul = input(f" Hey!, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ")
+            xul = input(f" Hey!, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
             cuvant1 = False
             continue
         cuvant1 = True
@@ -37,6 +38,10 @@ def push_x(tabla,mark_x):
         tabla = tabla[first_digit - 1]
         tabla[sec_digit] = len(tabla) - sec_digit
         tabla[sec_digit] = mark_x
+        if xul in list_incercari:
+            xul = input(f" Hey!, vezi ca ai gresit! (coordonate) Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
+            continue
+        list_incercari.append(xul)
         tabla = [rand1, rand2, rand3]
         print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
         tabla = [rand1, rand2, rand3]
@@ -74,8 +79,12 @@ def push_o(tabla, mark_o):
         tabla = tabla[first_digit - 1]
         tabla[sec_digit] = len(tabla) - sec_digit
         tabla[sec_digit] = mark_o
-        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
+        if oul in list_incercari:
+            oul = input(f"0  Hey!, vezi ca ai gresit (coordonate)! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
+            continue
+        list_incercari.append(oul)
         tabla = [rand1, rand2, rand3]
+        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
         game1 = False
         return tabla
             
@@ -102,11 +111,19 @@ def joc(tabla,mark_x,mark_o, empty_box):
     oblic_o_1 = [rand3_o[0], rand2_o[1], rand1_o[2]]
     oblic_o_2 = [rand1_o[0], rand2_o[1], rand3_o[2]]
     tabla_o = [rand1_o, rand2_o, cola_o, colb_o, colc_o,rand3_o, oblic_o_1, oblic_o_2]
-    game0 = True
-    while game0:
-        for a in tabla:
-            if mark_x not in tabla:
-                push_x(tabla, mark_x)
-
+    incercari_x = 0
+    incercari_o = 0
+    prim_joc = True
+    while incercari_x <= 9 and incercari_o <= 9:
+        if prim_joc == True:
+            for a in range(len(tabla)):
+                if mark_x not in tabla[a] and a != len(tabla):
+                    if a == len(tabla) - 1:
+                        push_x(tabla, mark_x)
+                        incercari_x = incercari_x + 1
+                        push_o(tabla, mark_o)
+                        incercari_o = incercari_o + 1
+                        prim_joc = False
+        
 joc(tabla,mark_x,mark_o, empty_box)
 
