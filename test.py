@@ -10,7 +10,6 @@ empty_box = "[_]"
 list_incercari = []
 def push_x(tabla,mark_x):
     """Jocul pt X"""
-    print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
     tabel_nr = ["1", "2", "3"]
     tabel_lit = ["a", "b", "c"]
     game1 = True
@@ -38,12 +37,10 @@ def push_x(tabla,mark_x):
         tabla = tabla[first_digit - 1]
         tabla[sec_digit] = len(tabla) - sec_digit
         tabla[sec_digit] = mark_x
-        if xul in list_incercari:
+        while xul in list_incercari:
             xul = input(f" Hey!, vezi ca ai gresit! (coordonate) Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
             continue
         list_incercari.append(xul)
-        tabla = [rand1, rand2, rand3]
-        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
         tabla = [rand1, rand2, rand3]
         game1 = False
         return tabla
@@ -79,12 +76,13 @@ def push_o(tabla, mark_o):
         tabla = tabla[first_digit - 1]
         tabla[sec_digit] = len(tabla) - sec_digit
         tabla[sec_digit] = mark_o
-        if oul in list_incercari:
+        while oul in list_incercari:
             oul = input(f"0  Hey!, vezi ca ai gresit (coordonate)! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
             continue
         list_incercari.append(oul)
+        
+        
         tabla = [rand1, rand2, rand3]
-        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
         game1 = False
         return tabla
             
@@ -115,6 +113,7 @@ def joc(tabla,mark_x,mark_o, empty_box):
     incercari_o = 0
     prim_joc = True
     while incercari_x <= 9 and incercari_o <= 9:
+        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
         if prim_joc == True:
             for a in range(len(tabla)):
                 if mark_x not in tabla[a] and a != len(tabla):
