@@ -88,25 +88,31 @@ def joc(tabla,mark_x,mark_o, empty_box):
     """Castigator sau remiza"""
     incercari_x = 0
     incercari_o = 0
-    prim_joc = True
-    proba = ""
+    list_x = []
+    prima_etapa = True
     print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
-    while incercari_x <= 9 and incercari_o <= 9:
-        if prim_joc == True:
-            for a in range(len(tabla)):
-                if mark_x not in tabla[a] and a != len(tabla):
-                    if a == len(tabla) - 1:
-                        push_x(tabla, mark_x)
-                        incercari_x = incercari_x + 1
-                        push_o(tabla, mark_o)
-                        incercari_o = incercari_o + 1
-                        prim_joc = False
-        for b in tabla[0]:
-            proba = proba + b
-            if proba[0] == mark_x and proba[1] == mark_x and proba[2] == mark_x:
-                print("X-ul a castigat!")
-            elif proba[0] == mark_o and proba[1] == mark_o and proba[2] == mark_o:
-                print("O-ul a castigat!")
+    while prima_etapa:
+        if mark_x not in tabla[0] and mark_x not in tabla[1] and mark_x not in tabla[2]:
+            push_x(tabla, mark_x)
+            incercari_x = incercari_x + 1
+        if mark_o not in tabla[0] and mark_o not in tabla[1] and mark_o not in tabla[2]:
+            push_o(tabla, mark_o)
+            incercari_o = incercari_o + 1
+        for a in tabla[0]:
+            if a == mark_x:
+                list_x.append(a)
+            if tabla[0] == list_x:
+                print("Prim_X")
+                prima_etapa = False
+        if incercari_o == incercari_x:
+            push_x(tabla, mark_x)
+            incercari_x = incercari_x + 1
+            list_x = []
+        elif incercari_x > incercari_o:
+            push_o(tabla, mark_o)
+            incercari_o = incercari_o + 1
         
+
 joc(tabla,mark_x,mark_o, empty_box)
+
 
