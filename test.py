@@ -89,6 +89,7 @@ def joc(tabla,mark_x,mark_o, empty_box):
     incercari_x = 0
     incercari_o = 0
     list_x = []
+    list_o = []
     prima_etapa = True
     print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
     while prima_etapa:
@@ -101,9 +102,46 @@ def joc(tabla,mark_x,mark_o, empty_box):
         for a in tabla[0]:
             if a == mark_x:
                 list_x.append(a)
-            if tabla[0] == list_x:
-                print("Prim_X")
-                prima_etapa = False
+                if tabla[0] == list_x:
+                    print("Prim_X")
+                    prima_etapa = False
+                    return tabla
+            elif a == mark_o:
+                list_o.append(a)
+                if tabla[0] == list_o:
+                    print("Prim_0")
+                    prima_etapa = False
+                    return tabla
+        for a in tabla[1]:
+            if a == mark_x:
+                list_x.append(a)
+                if tabla[1] == list_x:
+                    print("Prim_X")
+                    prima_etapa = False
+                    return tabla
+            elif a == mark_o:
+                list_o.append(a)
+                if tabla[1] == list_o:
+                    print("Prim_0")
+                    prima_etapa = False
+                    return tabla
+            for a in tabla[2]:
+                if a == mark_x:
+                    list_x.append(a)
+                    if tabla[2] == list_x:
+                        print("Prim_X")
+                        prima_etapa = False
+                        return tabla
+                elif a == mark_o:
+                    list_o.append(a)
+                    if tabla[2] == list_o:
+                        print("Prim_0")
+                        prima_etapa = False
+                        return tabla
+            
+
+            
+        
         if incercari_o == incercari_x:
             push_x(tabla, mark_x)
             incercari_x = incercari_x + 1
@@ -111,6 +149,7 @@ def joc(tabla,mark_x,mark_o, empty_box):
         elif incercari_x > incercari_o:
             push_o(tabla, mark_o)
             incercari_o = incercari_o + 1
+            list_o = []
         
 
 joc(tabla,mark_x,mark_o, empty_box)
