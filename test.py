@@ -10,7 +10,7 @@ mark_x = "[x]"
 mark_o = "[o]"
 prim_x = [mark_x, mark_x, mark_x]
 prim_o = [mark_o, mark_o, mark_o]
-
+print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
 empty_box = "[_]"
 list_incercari = []
 def push_x(tabla,mark_x):
@@ -44,9 +44,6 @@ def push_x(tabla,mark_x):
         tabla = tabla[first_digit - 1]
         tabla[sec_digit] = len(tabla) - sec_digit
         tabla[sec_digit] = mark_x
-        tabla = [rand1, rand2, rand3,]
-        game1 = False
-        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
         return tabla
 
 
@@ -81,9 +78,6 @@ def push_o(tabla, mark_o):
         tabla = tabla[first_digit - 1]
         tabla[sec_digit] = len(tabla) - sec_digit
         tabla[sec_digit] = mark_o
-        tabla = [rand1, rand2, rand3,]
-        game1 = False
-        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
         return tabla
             
 
@@ -93,14 +87,15 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box):
     incercari_x = 0
     incercari_o = 0
     prima_etapa = True
-    print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
     while prima_etapa:
         if mark_x not in tabla[0] and mark_x not in tabla[1] and mark_x not in tabla[2]:
             push_x(tabla, mark_x)
             incercari_x = incercari_x + 1
         elif mark_o not in tabla[0] and mark_o not in tabla[1] and mark_o not in tabla[2]:
+            print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
             push_o(tabla, mark_o)
             incercari_o = incercari_o + 1
+            os.system('cls')
         for cautare in range(len(tabla)):
             if tabla[cautare] == prim_x:
                 print("Prim_x")
@@ -146,10 +141,12 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box):
         elif incercari_x == incercari_o:
             push_x(tabla, mark_x)
             incercari_x = incercari_x + 1
+            os.system('cls')
         elif incercari_x > incercari_o:
             push_o(tabla, mark_o)
             incercari_o = incercari_o + 1
-        
+            os.system('cls')
+        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
 
         
         
