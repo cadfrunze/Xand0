@@ -4,9 +4,13 @@ import os
 rand3 = ["[_]", "[_]", "[_]"]
 rand2 = ["[_]", "[_]", "[_]"]
 rand1 = ["[_]", "[_]", "[_]"]
-tabla = [rand1, rand2, rand3]
+
+tabla = [rand1, rand2, rand3,]
 mark_x = "[x]"
 mark_o = "[o]"
+prim_x = [mark_x, mark_x, mark_x]
+prim_o = [mark_o, mark_o, mark_o]
+
 empty_box = "[_]"
 list_incercari = []
 def push_x(tabla,mark_x):
@@ -40,7 +44,7 @@ def push_x(tabla,mark_x):
         tabla = tabla[first_digit - 1]
         tabla[sec_digit] = len(tabla) - sec_digit
         tabla[sec_digit] = mark_x
-        tabla = [rand1, rand2, rand3]
+        tabla = [rand1, rand2, rand3,]
         game1 = False
         print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
         return tabla
@@ -77,81 +81,79 @@ def push_o(tabla, mark_o):
         tabla = tabla[first_digit - 1]
         tabla[sec_digit] = len(tabla) - sec_digit
         tabla[sec_digit] = mark_o
-        tabla = [rand1, rand2, rand3]
+        tabla = [rand1, rand2, rand3,]
         game1 = False
         print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
         return tabla
             
- 
 
-def joc(tabla,mark_x,mark_o, empty_box):
+
+def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box):
     """Castigator sau remiza"""
     incercari_x = 0
     incercari_o = 0
-    list_x = []
-    list_o = []
     prima_etapa = True
     print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
     while prima_etapa:
         if mark_x not in tabla[0] and mark_x not in tabla[1] and mark_x not in tabla[2]:
             push_x(tabla, mark_x)
             incercari_x = incercari_x + 1
-        if mark_o not in tabla[0] and mark_o not in tabla[1] and mark_o not in tabla[2]:
+        elif mark_o not in tabla[0] and mark_o not in tabla[1] and mark_o not in tabla[2]:
             push_o(tabla, mark_o)
             incercari_o = incercari_o + 1
-        for a in tabla[0]:
-            if a == mark_x:
-                list_x.append(a)
-                if tabla[0] == list_x:
-                    print("Prim_X")
-                    prima_etapa = False
-                    return tabla
-            elif a == mark_o:
-                list_o.append(a)
-                if tabla[0] == list_o:
-                    print("Prim_0")
-                    prima_etapa = False
-                    return tabla
-        for a in tabla[1]:
-            if a == mark_x:
-                list_x.append(a)
-                if tabla[1] == list_x:
-                    print("Prim_X")
-                    prima_etapa = False
-                    return tabla
-            elif a == mark_o:
-                list_o.append(a)
-                if tabla[1] == list_o:
-                    print("Prim_0")
-                    prima_etapa = False
-                    return tabla
-            for a in tabla[2]:
-                if a == mark_x:
-                    list_x.append(a)
-                    if tabla[2] == list_x:
-                        print("Prim_X")
-                        prima_etapa = False
-                        return tabla
-                elif a == mark_o:
-                    list_o.append(a)
-                    if tabla[2] == list_o:
-                        print("Prim_0")
-                        prima_etapa = False
-                        return tabla
-            
-
-            
+        for cautare in range(len(tabla)):
+            if tabla[cautare] == prim_x:
+                print("Prim_x")
+                return tabla
+            elif tabla[cautare] == prim_o:
+                print("Prim_o")
+                return tabla
         
-        if incercari_o == incercari_x:
+        if rand1[0] == mark_x and rand2[0] == mark_x and rand3[0] == mark_x:
+            print("Prim_x")
+            return tabla
+        elif rand1[0] == mark_o and rand2[0] == mark_o and rand3[0] == mark_o:
+            print("Prim_o")
+            return tabla
+        elif rand1[1] == mark_x and rand2[1] == mark_x and rand3[1] == mark_x:
+            print("Prim_x")
+            return tabla
+        elif rand1[1] == mark_o and rand2[1] == mark_o and rand3[1] == mark_o:
+            print("Prim_o")
+            return tabla
+        elif rand1[2] == mark_x and rand2[2] == mark_x and rand3[2] == mark_x:
+            print("Prim_x")
+            return tabla
+        elif rand1[2] == mark_o and rand2[2] == mark_o and rand3[2] == mark_o:
+            print("Prim_o")
+            return tabla
+        elif rand1[0] == mark_x and rand2[1] == mark_x and rand3[2] == mark_x:
+            print("Prim_x")
+            return tabla
+        elif rand1[0] == mark_o and rand2[1] == mark_o and rand3[2] == mark_o:
+            print("Prim_o")
+            return tabla
+        elif rand3[0] == mark_x and rand2[1] == mark_x and rand1[2] == mark_x:
+            print("Prim_x")
+            return tabla
+        elif rand3[0] == mark_o and rand2[1] == mark_o and rand1[2] == mark_o:
+            print("Prim_o")
+            return tabla
+        
+        elif empty_box not in tabla[0] and empty_box not in tabla[1] and empty_box not in tabla[2]:
+            print("Remiza")
+            return tabla
+        elif incercari_x == incercari_o:
             push_x(tabla, mark_x)
             incercari_x = incercari_x + 1
-            list_x = []
         elif incercari_x > incercari_o:
             push_o(tabla, mark_o)
             incercari_o = incercari_o + 1
-            list_o = []
         
 
-joc(tabla,mark_x,mark_o, empty_box)
+        
+        
+
+joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box)
 
 
