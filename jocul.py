@@ -232,31 +232,30 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             incercari_o = incercari_o + 1
         os.system('cls')
 
-        
-joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, userul_o)
-os.system('cls')
 # Afisare castigator sau remiza
-if useri_dict["user_X"][2] > useri_dict["user_0"][2]:
-    if useri_dict["user_X"][2] == 1:
-        print(userul_x)
-        print(useri_dict["user_X"][0] + " " + "a castigat! si are " + str(useri_dict["user_X"][2]) + " " + "punct")
+def castigatori(useri_dict, userul_x, userul_o):
+    os.system('cls')
+    if useri_dict["user_X"][2] > useri_dict["user_0"][2]:
+        if useri_dict["user_X"][2] == 1:
+            print(userul_x)
+            print(useri_dict["user_X"][0] + " " + "a castigat! si are " + str(useri_dict["user_X"][2]) + " " + "punct")
+        else:
+            print(userul_x)
+            print(useri_dict["user_X"][0] + " " + "a castigat! si are " + str(useri_dict["user_X"][2]) + " " + "puncte")
+        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
+    elif useri_dict["user_0"][2] > useri_dict["user_X"][2]:
+        if useri_dict["user_0"][2] == 1:
+            print(userul_o)
+            print(useri_dict["user_0"][0] + " " + "a castigat! si are " + str(useri_dict["user_0"][2]) + " " + "punct")
+        else:
+            print(userul_o)
+            print(useri_dict["user_0"][0] + " " + "a castigat! si are " + str(useri_dict["user_0"][2]) + " " + "puncte")
+        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
     else:
-        print(userul_x)
-        print(useri_dict["user_X"][0] + " " + "a castigat! si are " + str(useri_dict["user_X"][2]) + " " + "puncte")
-    print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
-elif useri_dict["user_0"][2] > useri_dict["user_X"][2]:
-    if useri_dict["user_0"][2] == 1:
-        print(userul_o)
-        print(useri_dict["user_0"][0] + " " + "a castigat! si are " + str(useri_dict["user_0"][2]) + " " + "punct")
-    else:
-        print(userul_o)
-        print(useri_dict["user_0"][0] + " " + "a castigat! si are " + str(useri_dict["user_0"][2]) + " " + "puncte")
-    print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
-else:
-    remiza = "Remiza"
-    remiza = remiza.center(30, "*")
-    print(remiza)
-    print("scor: " + str(useri_dict["user_X"][2]) + " >>> " + useri_dict["user_X"][0])
-    print("scor: " + str(useri_dict["user_0"][2]) + " >>> " + useri_dict["user_0"][0])
-    
-    print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
+        remiza = "Remiza"
+        remiza = remiza.center(30, "*")
+        print(remiza)
+        print("scor: " + str(useri_dict["user_X"][2]) + " >>> " + useri_dict["user_X"][0])
+        print("scor: " + str(useri_dict["user_0"][2]) + " >>> " + useri_dict["user_0"][0])
+        
+        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
