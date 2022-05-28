@@ -10,7 +10,6 @@ mark_x = "[x]"
 mark_o = "[o]"
 prim_x = [mark_x, mark_x, mark_x]
 prim_o = [mark_o, mark_o, mark_o]
-print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
 empty_box = "[_]"
 list_incercari = []
 def push_x(tabla,mark_x):
@@ -19,6 +18,7 @@ def push_x(tabla,mark_x):
     tabel_lit = ["a", "b", "c"]
     game1 = True
     cuvant1 = True
+    print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
     while game1:
         if cuvant1 == True:
             xul = input(f" introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
@@ -53,6 +53,7 @@ def push_o(tabla, mark_o):
     tabel_lit = ["a", "b", "c"]
     game1 = True
     cuvant1 = True
+    print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
     while game1:
         if cuvant1 == True:
             oul = input(f" 0 introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
@@ -91,8 +92,8 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box):
         if mark_x not in tabla[0] and mark_x not in tabla[1] and mark_x not in tabla[2]:
             push_x(tabla, mark_x)
             incercari_x = incercari_x + 1
-        elif mark_o not in tabla[0] and mark_o not in tabla[1] and mark_o not in tabla[2]:
-            print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
+            os.system('cls')
+        if mark_o not in tabla[0] and mark_o not in tabla[1] and mark_o not in tabla[2]:
             push_o(tabla, mark_o)
             incercari_o = incercari_o + 1
             os.system('cls')
@@ -146,11 +147,11 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box):
             push_o(tabla, mark_o)
             incercari_o = incercari_o + 1
             os.system('cls')
-        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
 
         
         
 
 joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box)
+print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
 
 
