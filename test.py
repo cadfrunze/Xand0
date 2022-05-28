@@ -99,40 +99,112 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box):
             os.system('cls')
         for cautare in range(len(tabla)):
             if tabla[cautare] == prim_x:
+                tabla[cautare].remove(mark_x)
+                tabla[cautare].remove(mark_x)
+                tabla[cautare].remove(mark_x)
+                tabla[cautare].insert(0, "[X]")
+                tabla[cautare].insert(1, "[X]")
+                tabla[cautare].insert(2, "[X]")
                 print("Prim_x")
                 return tabla
             elif tabla[cautare] == prim_o:
+                tabla[cautare].remove(mark_o)
+                tabla[cautare].remove(mark_o)
+                tabla[cautare].remove(mark_o)
+                tabla[cautare].insert(0, "[0]")
+                tabla[cautare].insert(1, "[0]")
+                tabla[cautare].insert(2, "[0]")
                 print("Prim_o")
                 return tabla
         
         if rand1[0] == mark_x and rand2[0] == mark_x and rand3[0] == mark_x:
+            rand1.remove(mark_x)
+            rand2.remove(mark_x)
+            rand3.remove(mark_x)
+            rand1.insert(0, "[X]")
+            rand2.insert(0, "[X]")
+            rand3.insert(0, "[X]")
             print("Prim_x")
             return tabla
         elif rand1[0] == mark_o and rand2[0] == mark_o and rand3[0] == mark_o:
+            rand1.remove(mark_o)
+            rand2.remove(mark_o)
+            rand3.remove(mark_o)
+            rand1.insert(0, "[0]")
+            rand2.insert(0, "[0]")
+            rand3.insert(0, "[0]")
             print("Prim_o")
             return tabla
         elif rand1[1] == mark_x and rand2[1] == mark_x and rand3[1] == mark_x:
+            rand1.remove(mark_x)
+            rand2.remove(mark_x)
+            rand3.remove(mark_x)
+            rand1.insert(1, "[X]")
+            rand2.insert(1, "[X]")
+            rand3.insert(1, "[X]")
             print("Prim_x")
             return tabla
         elif rand1[1] == mark_o and rand2[1] == mark_o and rand3[1] == mark_o:
+            rand1.remove(mark_o)
+            rand2.remove(mark_o)
+            rand3.remove(mark_o)
+            rand1.insert(1, "[0]")
+            rand2.insert(1, "[0]")
+            rand3.insert(1, "[0]")
             print("Prim_o")
             return tabla
         elif rand1[2] == mark_x and rand2[2] == mark_x and rand3[2] == mark_x:
+            rand1.remove(mark_x)
+            rand2.remove(mark_x)
+            rand3.remove(mark_x)
+            rand1.insert(2, "[X]")
+            rand2.insert(2, "[X]")
+            rand3.insert(2, "[X]")
             print("Prim_x")
             return tabla
         elif rand1[2] == mark_o and rand2[2] == mark_o and rand3[2] == mark_o:
+            rand1.remove(mark_o)
+            rand2.remove(mark_o)
+            rand3.remove(mark_o)
+            rand1.insert(2, "[0]")
+            rand2.insert(2, "[0]")
+            rand3.insert(2, "[0]")
             print("Prim_o")
             return tabla
         elif rand1[0] == mark_x and rand2[1] == mark_x and rand3[2] == mark_x:
+            rand1.remove(mark_x)
+            rand2.remove(mark_x)
+            rand3.remove(mark_x)
+            rand1.insert(0, "[X]")
+            rand2.insert(1, "[X]")
+            rand3.insert(2, "[X]")
             print("Prim_x")
             return tabla
         elif rand1[0] == mark_o and rand2[1] == mark_o and rand3[2] == mark_o:
+            rand1.remove(mark_o)
+            rand2.remove(mark_o)
+            rand3.remove(mark_o)
+            rand1.insert(0, "[0]")
+            rand2.insert(1, "[0]")
+            rand3.insert(2, "[0]")
             print("Prim_o")
             return tabla
         elif rand3[0] == mark_x and rand2[1] == mark_x and rand1[2] == mark_x:
+            rand3.remove(mark_x)
+            rand2.remove(mark_x)
+            rand1.remove(mark_x)
+            rand3.insert(0, "[X]")
+            rand2.insert(1, "[X]")
+            rand1.insert(2, "[X]")
             print("Prim_x")
             return tabla
         elif rand3[0] == mark_o and rand2[1] == mark_o and rand1[2] == mark_o:
+            rand3.remove(mark_o)
+            rand2.remove(mark_o)
+            rand1.remove(mark_o)
+            rand3.insert(0, "[0]")
+            rand2.insert(1, "[0]")
+            rand1.insert(2, "[0]")
             print("Prim_o")
             return tabla
         
@@ -153,5 +225,3 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box):
 
 joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box)
 print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
-
-
