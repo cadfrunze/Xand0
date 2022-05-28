@@ -20,11 +20,14 @@ userul_x = userul_x.center(30, "*")
 # Functie marcare X
 def push_x(tabla,mark_x, useri_dict, userul_x):
     """Jocul pt X"""
+    x_u = useri_dict["user_X"][1]
+    x_u = x_u.center(30, "*")
     tabel_nr = ["1", "2", "3"]
     tabel_lit = ["a", "b", "c"]
     game1 = True
     cuvant1 = True
     print(userul_x)
+    print(x_u)
     while game1:
         if cuvant1 == True:
             xul = input(">>> ")
@@ -55,11 +58,14 @@ def push_x(tabla,mark_x, useri_dict, userul_x):
 # Functie marcare 0
 def push_o(tabla, mark_o, useri_dict, userul_o):
     """Jocul pt 0"""
+    o_u = useri_dict["user_0"][1]
+    o_u = o_u.center(30, "*")
     tabel_nr = ["1", "2", "3"]
     tabel_lit = ["a", "b", "c"]
     game1 = True
     cuvant1 = True
     print(userul_o)
+    print(o_u)
     while game1:
         if cuvant1 == True:
             oul = input(">>> ")
