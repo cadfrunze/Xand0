@@ -141,8 +141,8 @@ os.system('cls')
 useri_dict = useri()
 print(f"Primul care incepe este {useri_dict['user_X'][0]} si joaca cu {useri_dict['user_X'][1]}, iar apoi {useri_dict['user_0'][0]} si joaca cu {useri_dict['user_0'][1]}")
 time.sleep(3)
-
-
+print(useri_dict["user_X"][2] + 1)
+print(useri_dict["user_0"][2])
 
 
 
