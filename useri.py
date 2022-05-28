@@ -6,8 +6,10 @@ import time
 user1 = ""
 user2 = ""
 lista_useri = []
+start_signup = True
 # Innregistrare useri
 def useri():
+    """Innregistrare useri + cuvinte obscene"""
     necenzurat = ["Pula", "Pulla", "Pizda", "Puta", "Coi", "Coaie", "Sugaci", "Sugi", "Suji", "Tampit", "Fuck", "Laba",]
     semne = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "`", "-", "=", "\"", ";", "'", ",", ".",
             "~", "@", "#", "$", "%", "^", "&" ,"*", "(", ")", "_", "+", "[", "]", "{", "}", "|", ":", "<", ">", "?", "/", " "]
@@ -125,7 +127,8 @@ def useri():
                 incercari = 0
                 game2 = False
                 game_1b = True
-    if game_1a == True and game_1b == True:       
+    if game_1a == True and game_1b == True:
+        os.system('cls')    
         useri_dict = {
             "user_X": random.choice(lista_useri),
             }
@@ -137,12 +140,14 @@ def useri():
             useri_dict["user_0"] = [user1, "0", 0]
         return useri_dict
 os.system('cls')
-
-useri_dict = useri()
+if start_signup == True:
+    useri_dict = useri()
+print("Sa vedem cine incepe....")  
+time.sleep(4) 
+os.system('cls')
 print(f"Primul care incepe este {useri_dict['user_X'][0]} si joaca cu {useri_dict['user_X'][1]}, iar apoi {useri_dict['user_0'][0]} si joaca cu {useri_dict['user_0'][1]}")
 time.sleep(3)
-print(useri_dict["user_X"][2] + 1)
-print(useri_dict["user_0"][2])
+
 
 
 
