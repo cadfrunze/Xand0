@@ -1,11 +1,11 @@
 from useri import useri_dict
 import os
+
 # Creeare si rulare joc
 # Afisare cerinte!
 rand3 = ["[_]", "[_]", "[_]"]
 rand2 = ["[_]", "[_]", "[_]"]
 rand1 = ["[_]", "[_]", "[_]"]
-
 tabla = [rand1, rand2, rand3,]
 mark_x = "[x]"
 mark_o = "[o]"
@@ -13,6 +13,13 @@ prim_x = [mark_x, mark_x, mark_x]
 prim_o = [mark_o, mark_o, mark_o]
 empty_box = "[_]"
 list_incercari = []
+userul_o = useri_dict['user_0'][0]
+userul_o = userul_o.center(30, "*")
+userul_x = useri_dict['user_X'][0]
+userul_x = userul_x.center(30, "*")
+
+
+
 userul_o = useri_dict['user_0'][0]
 userul_o = userul_o.center(30, "*")
 userul_x = useri_dict['user_X'][0]
@@ -265,3 +272,4 @@ def castigatori(useri_dict, userul_x, userul_o):
         print("scor: " + str(useri_dict["user_0"][2]) + " >>> " + useri_dict["user_0"][0])
         
         print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
+    
