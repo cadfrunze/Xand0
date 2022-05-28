@@ -1,108 +1,158 @@
+
+import random
 import os
-# Creeare si rulare joc
-rand3 = ["[_]", "[_]", "[_]"]
-rand2 = ["[_]", "[_]", "[_]"]
-rand1 = ["[_]", "[_]", "[_]"]
-tabla = [rand1, rand2, rand3]
-mark_x = "[x]"
-mark_o = "[o]"
-empty_box = "[_]"
-def push_x(tabla,mark_x):
-    """Jocul pt X"""
-    print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
-    tabel_nr = ["1", "2", "3"]
-    tabel_lit = ["a", "b", "c"]
+import time
+
+user1 = ""
+user2 = ""
+lista_useri = []
+# Innregistrare useri
+def useri():
+    necenzurat = ["Pula", "Pulla", "Pizda", "Puta", "Coi", "Coaie", "Sugaci", "Sugi", "Suji", "Tampit", "Fuck", "Laba",]
+    semne = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "`", "-", "=", "\"", ";", "'", ",", ".",
+            "~", "@", "#", "$", "%", "^", "&" ,"*", "(", ")", "_", "+", "[", "]", "{", "}", "|", ":", "<", ">", "?", "/", " "]
+    user_proba = ""
+    incercari = 0
+    game_1a = False
+    game_1b = False
     game1 = True
-    cuvant1 = True
-    while game1:
-        if cuvant1 == True:
-            xul = input(f" introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
-        if xul[0] == "" or xul[0] == "" or xul[0] not in tabel_nr:
-            xul = input(f" Hey!, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ")
-            cuvant1 = False
-            continue
-        elif xul[1] == "" or xul[1] == " " or xul[1] not in tabel_lit:
-            xul = input(f" Hey!, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ")
-            cuvant1 = False
-            continue
-        cuvant1 = True
-        first_digit = int(xul[0])
-        if xul[1] == "a":
-            sec_digit = 0
-        elif xul[1] == "b":
-            sec_digit = 1
-        elif xul[1] == "c":
-            sec_digit = 2
-        
-        tabla = tabla[first_digit - 1]
-        tabla[sec_digit] = len(tabla) - sec_digit
-        tabla[sec_digit] = mark_x
-        tabla = [rand1, rand2, rand3]
-        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
-        tabla = [rand1, rand2, rand3]
-        game1 = False
-        return tabla
+    while incercari <= 3 and game1 == True:
+        if incercari == 0:
+            user1 = input("Primul jucator, introdu' un nume >> ").capitalize()
+        for a in user1:
+            if a in semne:
+                continue
+            else:
+                user_proba = user_proba + a
+        if user_proba in necenzurat:
+            if incercari < 2:
+                os.system('cls')
+                user_proba = ""
+                user1 = input("Hey!, vezi ca ai scris o injuratura, scrieti un nume si gata! >>> ").capitalize()
+                incercari = incercari + 1
+                continue
+            elif incercari == 2:
+                os.system('cls')
+                user_proba = ""
+                user1 = input("Hey! ultima incercare! , ai scris o injuratura, scrieti un nume si gata! >>> ").capitalize()
+                incercari = incercari + 1
+                continue
+            elif incercari == 3:
+                os.system('cls')
+                print("Program inchis! Nerespectare cerinte")
+                game1 = False
+        elif len(user1) <= 2:
+            user_proba = ""
+            if incercari < 2:
+                os.system('cls')
+                user1 = input("Hey!, vezi numele tau contine mai putin de 3 caractere, scrieun nume cu un numar mai mare de 3 caractere! >>> ").capitalize()
+                incercari = incercari + 1
+                continue
+            elif incercari == 2:
+                os.system('cls')
+                user1 = input("Hey! ultima incercare!, vezi numele tau contine mai putin de 3 caractere, scrieun nume cu un numar mai mare de 3 caractere! >>> ").capitalize()
+                incercari = incercari + 1
+                continue
+            elif incercari == 3:
+                os.system('cls')
+                print("Program inchis! Nerespectare cerinte")
+                game1 = False
+        elif len(user1) >= 3 and user1 not in necenzurat:
+            print(f"Bun venit {user1}")
+            lista_useri.append(user1)
+            user_proba = ""
+            incercari = 0
+            game1 = False
+            game_1a = True
+    if game_1a == True:
+        game2 = True 
+        while incercari <= 3 and game2 == True:
+            if incercari == 0:
+                user2 = input("Al doilea jucator, introdu' un nume >> ").capitalize()
+            if user2 == user1:
+                os.system('cls')
+                if incercari == 2:
+                    user2 = input(f"Hey!, ultima incercare!, vezi ca ai introdus acelasi nume ca si {user1} >> ").capitalize()
+                    incercari = incercari + 1
+                    continue
+                elif incercari < 2:
+                    user2 = input(f"Hey!, vezi ca ai introdus acelasi nume ca si {user1} >> ").capitalize()
+                    incercari = incercari + 1
+                    continue
+                elif incercari == 3:
+                    print("Program inchis! Nerespectare cerinte")
+                    game2 = False
+            for a in user2:
+                if a in semne:
+                    continue
+                else:
+                    user_proba = user_proba + a
+            if user_proba in necenzurat:
+                if incercari < 2:
+                    os.system('cls')
+                    user_proba = ""
+                    user2 = input("Hmmm..., vezi ca ai scris o injuratura, scrieti un nume si gata! >>> ").capitalize()
+                    incercari = incercari + 1
+                    continue
+                elif incercari == 2:
+                    os.system('cls')
+                    user_proba = ""
+                    user2 = input("Hey! ultima incercare! , ai scris o injuratura, scrieti un nume si gata! >>> ").capitalize()
+                    incercari = incercari + 1
+                    continue
+                elif incercari == 3:
+                    os.system('cls')
+                    print("Program inchis! Nerespectare cerinte")
+                    game2 = False
+            elif len(user2) <= 2:
+                os.system('cls')
+                user_proba = ""
+                if incercari < 2:
+                    user2 = input("Hey!, vezi numele tau contine mai putin de 3 caractere, scrieun nume cu un numar mai mare de 3 caractere! >>> ").capitalize()
+                    incercari = incercari + 1
+                    continue
+                elif incercari == 2:
+                    user2 = input("Hey! ultima incercare!, vezi numele tau contine mai putin de 3 caractere, scrieun nume cu un numar mai mare de 3 caractere! >>> ").capitalize()
+                    incercari = incercari + 1
+                    continue
+                elif incercari == 3:
+                    print("Program inchis! Nerespectare cerinte")
+                    game2 = False
+            elif len(user2) >= 3 and user2 not in necenzurat and user2 != user1:
+                print(f"Bun venit si tie {user2}")
+                lista_useri.append(user2)
+                user_proba = ""
+                incercari = 0
+                game2 = False
+                game_1b = True
+    if game_1a == True and game_1b == True:       
+        useri_dict = {
+            "user_X": random.choice(lista_useri),
+            }
+        if useri_dict["user_X"] == user1:
+            useri_dict["user_X"] = [user1, "X", 0,]
+            useri_dict["user_0"] = [user2, "0", 0] 
+        elif useri_dict["user_X"] == user2:
+            useri_dict["user_X"] = [user2, "X", 0]
+            useri_dict["user_0"] = [user1, "0", 0]
+        return useri_dict
+os.system('cls')
+
+useri_dict = useri()
+print(f"Primul care incepe este {useri_dict['user_X'][0]} si joaca cu {useri_dict['user_X'][2]}, iar apoi {useri_dict['user_0'][0]} si joaca cu {useri_dict['user_0'][2]}")
+print(useri_dict)
 
 
-def push_o(tabla, mark_o):
-    """Jocul pt 0"""
-    tabel_nr = ["1", "2", "3"]
-    tabel_lit = ["a", "b", "c"]
-    game1 = True
-    cuvant1 = True
 
-    while game1:
-        if cuvant1 == True:
-            oul = input(f" 0 introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
-        if oul[0] == "" or oul[0] == " " or oul[0] not in tabel_nr:
-            oul = input(f" 0 Hey!, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ")
-            cuvant1 = False
-            continue
-        elif oul[1] == "" or oul[1] == " " or oul[1] not in tabel_lit:
-            oul = input(f" 0 Hey!, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ")
-            cuvant1 = False
-            continue
-        cuvant1 = True
-        first_digit = int(oul[0])
-        if oul[1] == "a":
-            sec_digit = 0
-        elif oul[1] == "b":
-            sec_digit = 1
-        elif oul[1] == "c":
-            sec_digit = 2
-        
-        tabla = tabla[first_digit - 1]
-        tabla[sec_digit] = len(tabla) - sec_digit
-        tabla[sec_digit] = mark_o
-        print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
-        tabla = [rand1, rand2, rand3]
-        game1 = False
-        return tabla
-            
- 
 
-def joc(tabla,mark_x,mark_o, empty_box):
-    """Castigator sau remiza"""
-    rand3_x = ["[x]", "[x]", "[x]"]
-    rand2_x = ["[x]", "[x]", "[x]"]
-    rand1_x = ["[x]", "[x]", "[x]"]
-    cola_x = [rand1_x[0], rand2_x[0], rand3_x[0]]
-    colb_x = [rand1_x[1], rand2_x[1], rand3_x[1]]
-    colc_x = [rand1_x[2], rand2_x[2], rand3_x[2]]
-    oblic_x_1 = [rand3_x[0], rand2_x[1], rand1_x[2]]
-    oblic_x_2 = [rand1_x[0], rand2_x[1], rand3_x[2]]
-    tabla_x = [rand1_x, rand2_x, rand3_x, cola_x, colb_x, colc_x ,oblic_x_1,oblic_x_2]
 
-    rand3_o = ["[o]", "[o]", "[o]"]
-    rand2_o = ["[o]", "[o]", "[o]"]
-    rand1_o = ["[o]", "[o]", "[o]"]
-    cola_o = [rand1_o[0], rand2_o[0], rand3_o[0]]
-    colb_o = [rand1_o[1], rand2_o[1], rand3_o[1]]
-    colc_o = [rand1_o[2], rand2_o[2], rand3_o[2]]
-    oblic_o_1 = [rand3_o[0], rand2_o[1], rand1_o[2]]
-    oblic_o_2 = [rand1_o[0], rand2_o[1], rand3_o[2]]
-    tabla_o = [rand1_o, rand2_o, cola_o, colb_o, colc_o,rand3_o, oblic_o_1, oblic_o_2]
-    game0 = True
-    print(tabla)
-joc(tabla,mark_x,mark_o, empty_box)
+
+
+
+
+
+
+
+
+
 
