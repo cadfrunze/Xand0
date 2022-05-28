@@ -1,6 +1,7 @@
 from useri import useri_dict
 import os
 # Creeare si rulare joc
+# Afisare cerinte!
 rand3 = ["[_]", "[_]", "[_]"]
 rand2 = ["[_]", "[_]", "[_]"]
 rand1 = ["[_]", "[_]", "[_]"]
@@ -16,6 +17,7 @@ userul_o = useri_dict['user_0'][0]
 userul_o = userul_o.center(30, "*")
 userul_x = useri_dict['user_X'][0]
 userul_x = userul_x.center(30, "*")
+# Functie marcare X
 def push_x(tabla,mark_x, useri_dict, userul_x):
     """Jocul pt X"""
     tabel_nr = ["1", "2", "3"]
@@ -50,7 +52,7 @@ def push_x(tabla,mark_x, useri_dict, userul_x):
         tabla[sec_digit] = mark_x
         return tabla
 
-
+# Functie marcare 0
 def push_o(tabla, mark_o, useri_dict, userul_o):
     """Jocul pt 0"""
     tabel_nr = ["1", "2", "3"]
@@ -86,9 +88,9 @@ def push_o(tabla, mark_o, useri_dict, userul_o):
         return tabla
             
 
-
+# Functie jocul....Greu ii futa-l drequ'
 def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, userul_o):
-    """Castigator sau remiza"""
+    """Castigator sau remiza....Vai futa-l drequ'"""
     incercari_x = 0
     incercari_o = 0
     prima_etapa = True
@@ -231,10 +233,9 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
         os.system('cls')
 
         
-        
-
 joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, userul_o)
 os.system('cls')
+# Afisare castigator sau remiza
 if useri_dict["user_X"][2] > useri_dict["user_0"][2]:
     if useri_dict["user_X"][2] == 1:
         print(userul_x)
