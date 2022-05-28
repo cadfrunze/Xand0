@@ -18,7 +18,7 @@ def useri():
     game1 = True
     while incercari <= 3 and game1 == True:
         if incercari == 0:
-            user1 = input("Primul jucator, introdu' un nume >> ").capitalize()
+            user1 = input("Primul jucator, introdu' un nume >>> ").capitalize()
         for a in user1:
             if a in semne:
                 continue
@@ -68,7 +68,7 @@ def useri():
         game2 = True 
         while incercari <= 3 and game2 == True:
             if incercari == 0:
-                user2 = input("Al doilea jucator, introdu' un nume >> ").capitalize()
+                user2 = input("Al doilea jucator, introdu' un nume >>> ").capitalize()
             if user2 == user1:
                 os.system('cls')
                 if incercari == 2:
@@ -130,17 +130,17 @@ def useri():
             "user_X": random.choice(lista_useri),
             }
         if useri_dict["user_X"] == user1:
-            useri_dict["user_X"] = [user1, 0, "X"]
-            useri_dict["user_0"] = [user2, 0, "0"] 
+            useri_dict["user_X"] = [user1, "X", 0,]
+            useri_dict["user_0"] = [user2, "0", 0] 
         elif useri_dict["user_X"] == user2:
-            useri_dict["user_X"] = [user2, 0, "X"]
-            useri_dict["user_0"] = [user1, 0, "0"]
+            useri_dict["user_X"] = [user2, "X", 0]
+            useri_dict["user_0"] = [user1, "0", 0]
         return useri_dict
 os.system('cls')
 
 useri_dict = useri()
-print(f"Primul care incepe este {useri_dict['user_X'][0]} si joaca cu {useri_dict['user_X'][2]}, iar apoi {useri_dict['user_0'][0]} si joaca cu {useri_dict['user_0'][2]}")
-time.sleep(5)
+print(f"Primul care incepe este {useri_dict['user_X'][0]} si joaca cu {useri_dict['user_X'][1]}, iar apoi {useri_dict['user_0'][0]} si joaca cu {useri_dict['user_0'][1]}")
+time.sleep(3)
 
 
 
