@@ -133,11 +133,11 @@ def useri():
             "user_X": random.choice(lista_useri),
             }
         if useri_dict["user_X"] == user1:
-            useri_dict["user_X"] = [user1, "X", 0,]
-            useri_dict["user_0"] = [user2, "0", 0] 
+            useri_dict["user_X"] = [user1, "X", 0, []]
+            useri_dict["user_0"] = [user2, "0", 0, []] 
         elif useri_dict["user_X"] == user2:
-            useri_dict["user_X"] = [user2, "X", 0]
-            useri_dict["user_0"] = [user1, "0", 0]
+            useri_dict["user_X"] = [user2, "X", 0, []]
+            useri_dict["user_0"] = [user1, "0", 0, []]
         return useri_dict
 os.system('cls')
 if start_signup == True:
