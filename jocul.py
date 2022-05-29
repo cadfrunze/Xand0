@@ -13,7 +13,7 @@ mark_o = "[o]"
 prim_x = [mark_x, mark_x, mark_x]
 prim_o = [mark_o, mark_o, mark_o]
 empty_box = "[_]"
-list_incercari = []
+
 
 
 userul_o = useri_dict['user_0'][0]
@@ -34,7 +34,7 @@ def push_x(tabla,mark_x, useri_dict, userul_x):
     print(x_u)
     while game1:
         if cuvant1 == True:
-            xul = input(">>> ")
+            xul = input(">>> ").lower()
         if xul[0] == "" or xul[0] == "" or xul[0] not in tabel_nr:
             xul = input(f" Hey! {useri_dict['user_X'][0]}, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
             cuvant1 = False
@@ -43,10 +43,18 @@ def push_x(tabla,mark_x, useri_dict, userul_x):
             xul = input(f" Hey! {useri_dict['user_X'][0]}, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
             cuvant1 = False
             continue
-        while xul in list_incercari:
-            xul = input(f" Hey! {useri_dict['user_X'][0]}, vezi ca ai gresit! (coordonate) Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
-        list_incercari.append(xul)
+        while xul in useri_dict["user_X"][3] or xul in useri_dict["user_0"][3]:
+            if xul in useri_dict["user_X"][3]:
+                print(f"Hey {useri_dict['user_X'][0]} vezi ca ai mai introdus acest {xul} coordonat")
+                xul = input(">>> ").lower()
+            else:
+                print(f" Hey! {useri_dict['user_X'][0]}, vezi ca ai introdus aceleasi coordonate ca si {useri_dict['user_0'][0]}")
+                xul = input(">>> ").lower()
+        useri_dict["user_X"][3].append(xul)
         cuvant1 = True
+        xul = ""
+        for a in useri_dict["user_X"][3][-1]:
+            xul = xul + a
         first_digit = int(xul[0])
         if xul[1] == "a":
             sec_digit = 0
@@ -57,7 +65,7 @@ def push_x(tabla,mark_x, useri_dict, userul_x):
         tabla = tabla[first_digit - 1]
         tabla[sec_digit] = len(tabla) - sec_digit
         tabla[sec_digit] = mark_x
-        game1 = False
+        return tabla
 
 # Functie marcare 0
 def push_o(tabla, mark_o, useri_dict, userul_o):
@@ -72,7 +80,7 @@ def push_o(tabla, mark_o, useri_dict, userul_o):
     print(o_u)
     while game1:
         if cuvant1 == True:
-            oul = input(">>> ")
+            oul = input(">>> ").lower()
         if oul[0] == "" or oul[0] == " " or oul[0] not in tabel_nr:
             oul = input(f" 0 Hey! {useri_dict['user_0'][0]}, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ")
             cuvant1 = False
@@ -81,10 +89,18 @@ def push_o(tabla, mark_o, useri_dict, userul_o):
             oul = input(f" 0 Hey! {useri_dict['user_0'][0]}, vezi ca ai gresit! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ")
             cuvant1 = False
             continue
-        while oul in list_incercari:
-            oul = input(f"0  Hey! {useri_dict['user_0'][0]}, vezi ca ai gresit (coordonate)! Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C >>> ").lower()
-        list_incercari.append(oul)
+        while oul in useri_dict["user_0"][3] or oul in useri_dict["user_X"][3]:
+            if oul in useri_dict["user_0"][3]:
+                print(f"Hey {useri_dict['user_0'][0]} vezi ca ai mai introdus acest {oul} coordonat")
+                oul = input(">>> ").lower()
+            else:
+                print(f" Hey! {useri_dict['user_0'][0]}, vezi ca ai introdus aceleasi coordonate ca si {useri_dict['user_X'][0]}")
+                oul = input(">>> ").lower()
+        useri_dict["user_0"][3].append(oul)
         cuvant1 = True
+        oul = ""
+        for a in useri_dict["user_0"][3][-1]:
+            oul = oul + a
         first_digit = int(oul[0])
         if oul[1] == "a":
             sec_digit = 0
@@ -95,7 +111,7 @@ def push_o(tabla, mark_o, useri_dict, userul_o):
         tabla = tabla[first_digit - 1]
         tabla[sec_digit] = len(tabla) - sec_digit
         tabla[sec_digit] = mark_o
-        game1 = False
+        return tabla
             
 
 # Functie jocul....Greu ii futa-l drequ'
@@ -129,7 +145,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
                 tabla[cautare].insert(1, "[X]")
                 tabla[cautare].insert(2, "[X]")
                 useri_dict['user_X'][2] = useri_dict['user_X'][2] + 1
-                prima_etapa = False
+                return tabla
             elif tabla[cautare] == prim_o:
                 tabla[cautare].remove(mark_o)
                 tabla[cautare].remove(mark_o)
@@ -138,7 +154,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
                 tabla[cautare].insert(1, "[0]")
                 tabla[cautare].insert(2, "[0]")
                 useri_dict['user_0'][2] = useri_dict['user_0'][2] + 1
-                prima_etapa = False
+                return tabla
         if rand1[0] == mark_x and rand2[0] == mark_x and rand3[0] == mark_x:
             rand1.remove(mark_x)
             rand2.remove(mark_x)
@@ -147,7 +163,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(0, "[X]")
             rand3.insert(0, "[X]")
             useri_dict['user_X'][2] = useri_dict['user_X'][2] + 1
-            prima_etapa = False
+            return tabla
         elif rand1[0] == mark_o and rand2[0] == mark_o and rand3[0] == mark_o:
             rand1.remove(mark_o)
             rand2.remove(mark_o)
@@ -156,7 +172,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(0, "[0]")
             rand3.insert(0, "[0]")
             useri_dict['user_0'][2] = useri_dict['user_0'][2] + 1
-            prima_etapa = False
+            return tabla
         elif rand1[1] == mark_x and rand2[1] == mark_x and rand3[1] == mark_x:
             rand1.remove(mark_x)
             rand2.remove(mark_x)
@@ -165,7 +181,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(1, "[X]")
             rand3.insert(1, "[X]")
             useri_dict['user_X'][2] = useri_dict['user_X'][2] + 1
-            prima_etapa = False
+            return tabla
         elif rand1[1] == mark_o and rand2[1] == mark_o and rand3[1] == mark_o:
             rand1.remove(mark_o)
             rand2.remove(mark_o)
@@ -174,7 +190,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(1, "[0]")
             rand3.insert(1, "[0]")
             useri_dict['user_0'][2] = useri_dict['user_0'][2] + 1
-            prima_etapa = False
+            return tabla
         elif rand1[2] == mark_x and rand2[2] == mark_x and rand3[2] == mark_x:
             rand1.remove(mark_x)
             rand2.remove(mark_x)
@@ -183,7 +199,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(2, "[X]")
             rand3.insert(2, "[X]")
             useri_dict['user_X'][2] = useri_dict['user_X'][2] + 1
-            prima_etapa = False
+            return tabla
         elif rand1[2] == mark_o and rand2[2] == mark_o and rand3[2] == mark_o:
             rand1.remove(mark_o)
             rand2.remove(mark_o)
@@ -192,7 +208,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(2, "[0]")
             rand3.insert(2, "[0]")
             useri_dict['user_0'][2] = useri_dict['user_0'][2] + 1
-            prima_etapa = False
+            return tabla
         elif rand1[0] == mark_x and rand2[1] == mark_x and rand3[2] == mark_x:
             rand1.remove(mark_x)
             rand2.remove(mark_x)
@@ -201,7 +217,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(1, "[X]")
             rand3.insert(2, "[X]")
             useri_dict['user_X'][2] = useri_dict['user_X'][2] + 1
-            prima_etapa = False
+            return tabla
         elif rand1[0] == mark_o and rand2[1] == mark_o and rand3[2] == mark_o:
             rand1.remove(mark_o)
             rand2.remove(mark_o)
@@ -210,7 +226,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(1, "[0]")
             rand3.insert(2, "[0]")
             useri_dict['user_0'][2] = useri_dict['user_0'][2] + 1
-            prima_etapa = False
+            return tabla
         elif rand3[0] == mark_x and rand2[1] == mark_x and rand1[2] == mark_x:
             rand3.remove(mark_x)
             rand2.remove(mark_x)
@@ -219,7 +235,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(1, "[X]")
             rand1.insert(2, "[X]")
             useri_dict['user_X'][2] = useri_dict['user_X'][2] + 1
-            prima_etapa = False
+            return tabla
         elif rand3[0] == mark_o and rand2[1] == mark_o and rand1[2] == mark_o:
             rand3.remove(mark_o)
             rand2.remove(mark_o)
@@ -228,11 +244,11 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(1, "[0]")
             rand1.insert(2, "[0]")
             useri_dict['user_0'][2] = useri_dict['user_0'][2] + 1
-            prima_etapa = False
+            return tabla
         
         elif empty_box not in tabla[0] and empty_box not in tabla[1] and empty_box not in tabla[2]:
             print("Remiza")
-            prima_etapa = False
+            return tabla
         elif incercari_x == incercari_o:
             push_x(tabla, mark_x, useri_dict, userul_x)
             incercari_x = incercari_x + 1
