@@ -139,7 +139,7 @@ def useri():
             useri_dict["user_X"] = [user2, "X", 0, []]
             useri_dict["user_0"] = [user1, "0", 0, []]
         return useri_dict
-os.system('cls')
+
 if start_signup == True:
     useri_dict = useri()
 print("Sa vedem cine incepe....")  
