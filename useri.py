@@ -2,7 +2,7 @@
 import random
 import os
 import time
-
+os.system('cls')
 user1 = ""
 user2 = ""
 lista_useri = []
