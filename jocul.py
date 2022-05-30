@@ -121,10 +121,13 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
     incercari_x = 0
     incercari_o = 0
     prima_etapa = True
+    game_incercari = True
     while prima_etapa:
         os.system('cls')
         print("Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C")
         print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
+        if useri_dict["user_X"][2] > 0 or useri_dict["user_0"][2] > 0:
+            print("Runde castigate:\n" + {useri_dict["user_X"][0]} + " :" + str({useri_dict["user_X"][2]}) + "\n" + {useri_dict["user_0"][0]} + " :" + str({useri_dict["user_0"][2]}))
         if mark_x not in tabla[0] and mark_x not in tabla[1] and mark_x not in tabla[2]:
             push_x(tabla, mark_x, useri_dict, userul_x)
             incercari_x = incercari_x + 1
@@ -146,7 +149,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
                 tabla[cautare].insert(1, "[X]")
                 tabla[cautare].insert(2, "[X]")
                 useri_dict['user_X'][2] = useri_dict['user_X'][2] + 1
-                return tabla
+                game_incercari = False
             elif tabla[cautare] == prim_o:
                 tabla[cautare].remove(mark_o)
                 tabla[cautare].remove(mark_o)
@@ -155,7 +158,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
                 tabla[cautare].insert(1, "[0]")
                 tabla[cautare].insert(2, "[0]")
                 useri_dict['user_0'][2] = useri_dict['user_0'][2] + 1
-                return tabla
+                game_incercari = False
         if rand1[0] == mark_x and rand2[0] == mark_x and rand3[0] == mark_x:
             rand1.remove(mark_x)
             rand2.remove(mark_x)
@@ -164,7 +167,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(0, "[X]")
             rand3.insert(0, "[X]")
             useri_dict['user_X'][2] = useri_dict['user_X'][2] + 1
-            return tabla
+            game_incercari = False
         elif rand1[0] == mark_o and rand2[0] == mark_o and rand3[0] == mark_o:
             rand1.remove(mark_o)
             rand2.remove(mark_o)
@@ -173,7 +176,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(0, "[0]")
             rand3.insert(0, "[0]")
             useri_dict['user_0'][2] = useri_dict['user_0'][2] + 1
-            return tabla
+            game_incercari = False
         elif rand1[1] == mark_x and rand2[1] == mark_x and rand3[1] == mark_x:
             rand1.remove(mark_x)
             rand2.remove(mark_x)
@@ -182,7 +185,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(1, "[X]")
             rand3.insert(1, "[X]")
             useri_dict['user_X'][2] = useri_dict['user_X'][2] + 1
-            return tabla
+            game_incercari = False
         elif rand1[1] == mark_o and rand2[1] == mark_o and rand3[1] == mark_o:
             rand1.remove(mark_o)
             rand2.remove(mark_o)
@@ -191,7 +194,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(1, "[0]")
             rand3.insert(1, "[0]")
             useri_dict['user_0'][2] = useri_dict['user_0'][2] + 1
-            return tabla
+            game_incercari = False
         elif rand1[2] == mark_x and rand2[2] == mark_x and rand3[2] == mark_x:
             rand1.remove(mark_x)
             rand2.remove(mark_x)
@@ -200,7 +203,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(2, "[X]")
             rand3.insert(2, "[X]")
             useri_dict['user_X'][2] = useri_dict['user_X'][2] + 1
-            return tabla
+            game_incercari = False
         elif rand1[2] == mark_o and rand2[2] == mark_o and rand3[2] == mark_o:
             rand1.remove(mark_o)
             rand2.remove(mark_o)
@@ -209,7 +212,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(2, "[0]")
             rand3.insert(2, "[0]")
             useri_dict['user_0'][2] = useri_dict['user_0'][2] + 1
-            return tabla
+            game_incercari = False
         elif rand1[0] == mark_x and rand2[1] == mark_x and rand3[2] == mark_x:
             rand1.remove(mark_x)
             rand2.remove(mark_x)
@@ -218,7 +221,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(1, "[X]")
             rand3.insert(2, "[X]")
             useri_dict['user_X'][2] = useri_dict['user_X'][2] + 1
-            return tabla
+            game_incercari = False
         elif rand1[0] == mark_o and rand2[1] == mark_o and rand3[2] == mark_o:
             rand1.remove(mark_o)
             rand2.remove(mark_o)
@@ -227,7 +230,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(1, "[0]")
             rand3.insert(2, "[0]")
             useri_dict['user_0'][2] = useri_dict['user_0'][2] + 1
-            return tabla
+            game_incercari = False
         elif rand3[0] == mark_x and rand2[1] == mark_x and rand1[2] == mark_x:
             rand3.remove(mark_x)
             rand2.remove(mark_x)
@@ -236,7 +239,7 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(1, "[X]")
             rand1.insert(2, "[X]")
             useri_dict['user_X'][2] = useri_dict['user_X'][2] + 1
-            return tabla
+            game_incercari = False
         elif rand3[0] == mark_o and rand2[1] == mark_o and rand1[2] == mark_o:
             rand3.remove(mark_o)
             rand2.remove(mark_o)
@@ -245,44 +248,58 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand2.insert(1, "[0]")
             rand1.insert(2, "[0]")
             useri_dict['user_0'][2] = useri_dict['user_0'][2] + 1
-            return tabla
+            game_incercari = False
         
         elif empty_box not in tabla[0] and empty_box not in tabla[1] and empty_box not in tabla[2]:
-            print("Remiza")
+            game_incercari = False
+        if game_incercari == True:
+            if incercari_x == incercari_o:
+                push_x(tabla, mark_x, useri_dict, userul_x)
+                incercari_x = incercari_x + 1
+                os.system('cls')
+            elif incercari_x > incercari_o:
+                push_o(tabla, mark_o, useri_dict, userul_o)
+                incercari_o = incercari_o + 1
+        elif game_incercari == False:
+            if prim_x in tabla:
+                if useri_dict["user_X"][2] == 1:
+                        print(userul_x)
+                        print(useri_dict["user_X"][0] + " " + "a castigat! si are " + str(useri_dict["user_X"][2]) + " " + "punct")
+                elif useri_dict["user_X"][2] > 1:
+                        print(userul_x)
+                        print(useri_dict["user_X"][0] + " " + "a castigat! si are " + str(useri_dict["user_X"][2]) + " " + "puncte")
+            elif prim_o in tabla:
+                if useri_dict["user_0"][2] == 1:
+                    print(userul_o)
+                    print(useri_dict["user_0"][0] + " " + "a castigat! si are " + str(useri_dict["user_0"][2]) + " " + "punct")
+                elif useri_dict["user_0"][2] > 1:
+                    print(userul_o)
+                    print(useri_dict["user_0"][0] + " " + "a castigat! si are " + str(useri_dict["user_0"][2]) + " " + "puncte")
             return tabla
-        elif incercari_x == incercari_o:
-            push_x(tabla, mark_x, useri_dict, userul_x)
-            incercari_x = incercari_x + 1
-            os.system('cls')
-        elif incercari_x > incercari_o:
-            push_o(tabla, mark_o, useri_dict, userul_o)
-            incercari_o = incercari_o + 1
         os.system('cls')
 
 # Afisare castigator sau remiza
-def castigatori(useri_dict, userul_x, userul_o):
-    os.system('cls')
-    print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
-    if useri_dict["user_X"][2] > useri_dict["user_0"][2]:
-        if useri_dict["user_X"][2] == 1:
-            print(userul_x)
-            print(useri_dict["user_X"][0] + " " + "a castigat! si are " + str(useri_dict["user_X"][2]) + " " + "punct")
-        else:
-            print(userul_x)
-            print(useri_dict["user_X"][0] + " " + "a castigat! si are " + str(useri_dict["user_X"][2]) + " " + "puncte")
-    elif useri_dict["user_0"][2] > useri_dict["user_X"][2]:
-        if useri_dict["user_0"][2] == 1:
-            print(userul_o)
-            print(useri_dict["user_0"][0] + " " + "a castigat! si are " + str(useri_dict["user_0"][2]) + " " + "punct")
-        else:
-            print(userul_o)
-            print(useri_dict["user_0"][0] + " " + "a castigat! si are " + str(useri_dict["user_0"][2]) + " " + "puncte")
-    elif joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, userul_o) == "Remiza":
-        remiza = "Remiza"
-        remiza = remiza.center(30, "*")
-        print(remiza)
-        print("scor: " + str(useri_dict["user_X"][2]) + " >>> " + useri_dict["user_X"][0])
-        print("scor: " + str(useri_dict["user_0"][2]) + " >>> " + useri_dict["user_0"][0])
+# def castigatori(useri_dict, userul_x, userul_o):
+#     if useri_dict["user_X"][2] > useri_dict["user_0"][2]:
+#         if useri_dict["user_X"][2] == 1:
+#             print(userul_x)
+#             print(useri_dict["user_X"][0] + " " + "a castigat! si are " + str(useri_dict["user_X"][2]) + " " + "punct")
+#         else:
+#             print(userul_x)
+#             print(useri_dict["user_X"][0] + " " + "a castigat! si are " + str(useri_dict["user_X"][2]) + " " + "puncte")
+#     elif useri_dict["user_0"][2] > useri_dict["user_X"][2]:
+#         if useri_dict["user_0"][2] == 1:
+#             print(userul_o)
+#             print(useri_dict["user_0"][0] + " " + "a castigat! si are " + str(useri_dict["user_0"][2]) + " " + "punct")
+#         else:
+#             print(userul_o)
+#             print(useri_dict["user_0"][0] + " " + "a castigat! si are " + str(useri_dict["user_0"][2]) + " " + "puncte")
+#     else:
+#         remiza = "Remiza"
+#         remiza = remiza.center(30, "*")
+#         print(remiza)
+#         print("scor: " + str(useri_dict["user_X"][2]) + " >>> " + useri_dict["user_X"][0])
+#         print("scor: " + str(useri_dict["user_0"][2]) + " >>> " + useri_dict["user_0"][0])
 
 
 
@@ -294,7 +311,7 @@ raspuns = ""
 while final_game == True:
     if start_signup == True and raspuns == "":
         joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, userul_o)
-        castigatori(useri_dict, userul_x, userul_o)
+        # castigatori(useri_dict, userul_x, userul_o)
         print("1. Doresti sa joci in continuare?. Scrie \"1\" >>> \n2. Doresti sa resetezi jocul si sa innregistrezi playeri noi?. Scrie \"2\" >>> \n3. Doresti sa iesi din joc?. Scrie \"da\", \"3\" sau \"x\" >>> ")
         raspuns = input("Raspunde aici >>> ")
     elif raspuns == "1":
@@ -306,7 +323,7 @@ while final_game == True:
         useri_dict["user_X"][3] = []
         useri_dict["user_0"][3] = []
         joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, userul_o)
-        castigatori(useri_dict, userul_x, userul_o)
+        # castigatori(useri_dict, userul_x, userul_o)
         print("1. Doresti sa joci in continuare?. Scrie \"1\" >>> \n2. Doresti sa resetezi jocul si sa innregistrezi playeri noi?. Scrie \"2\" >>> \n3. Doresti sa iesi din joc?. Scrie \"da\", \"3\" sau \"x\" >>> ")
         raspuns = input("Raspunde aici >>> ")
 
