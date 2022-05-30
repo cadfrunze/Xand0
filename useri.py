@@ -127,8 +127,7 @@ def useri():
                 incercari = 0
                 game2 = False
                 game_1b = True
-    if game_1a == True and game_1b == True:
-        os.system('cls')    
+    if game_1a == True and game_1b == True:   
         useri_dict = {
             "user_X": random.choice(lista_useri),
             }
@@ -142,11 +141,13 @@ def useri():
 
 if start_signup == True:
     useri_dict = useri()
+time.sleep(2) 
+os.system('cls')
 print("Sa vedem cine incepe....")  
-time.sleep(4) 
+time.sleep(2) 
 os.system('cls')
 print(f"Primul care incepe este {useri_dict['user_X'][0]} si joaca cu {useri_dict['user_X'][1]}, iar apoi {useri_dict['user_0'][0]} si joaca cu {useri_dict['user_0'][1]}")
-time.sleep(3)
+time.sleep(2)
 
 
 
