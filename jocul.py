@@ -126,15 +126,17 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
         os.system('cls')
         print("Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C")
         print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
-        if useri_dict["user_X"][2] > 0 or useri_dict["user_0"][2] > 0:
-            print("Runde castigate:\n" + {useri_dict["user_X"][0]} + " :" + str({useri_dict["user_X"][2]}) + "\n" + {useri_dict["user_0"][0]} + " :" + str({useri_dict["user_0"][2]}))
         if mark_x not in tabla[0] and mark_x not in tabla[1] and mark_x not in tabla[2]:
+            if useri_dict["user_X"][2] > 0 or useri_dict["user_0"][2] > 0:
+                print(f"Pana acuma scorul este: \n" + useri_dict["user_X"][0] + " : " + str(useri_dict["user_X"][2])  +  "\n" + useri_dict["user_0"][0] + " : " + str(useri_dict["user_0"][2]))
             push_x(tabla, mark_x, useri_dict, userul_x)
             incercari_x = incercari_x + 1
             os.system('cls')
         if mark_o not in tabla[0] and mark_o not in tabla[1] and mark_o not in tabla[2]:
             print("Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C")
             print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
+            if useri_dict["user_X"][2] > 0 or useri_dict["user_0"][2] > 0:
+                print(f"Pana acuma scorul este: \n" + useri_dict["user_X"][0] + " : " + str(useri_dict["user_X"][2])  +  "\n" + useri_dict["user_0"][0] + " : " + str(useri_dict["user_0"][2]))
             push_o(tabla, mark_o, useri_dict, userul_o)
             incercari_o = incercari_o + 1
             os.system('cls')
@@ -249,8 +251,9 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
             rand1.insert(2, "[0]")
             useri_dict['user_0'][2] = useri_dict['user_0'][2] + 1
             game_incercari = False
-        
-        elif empty_box not in tabla[0] and empty_box not in tabla[1] and empty_box not in tabla[2]:
+        if useri_dict["user_X"][2] > 0 or useri_dict["user_0"][2] > 0:
+            print(f"Pana acuma scorul este: \n" + useri_dict["user_X"][0] + " : " + str(useri_dict["user_X"][2])  +  "\n" + useri_dict["user_0"][0] + " : " + str(useri_dict["user_0"][2]))
+        if empty_box not in tabla[0] and empty_box not in tabla[1] and empty_box not in tabla[2]:
             game_incercari = False
         if game_incercari == True:
             if incercari_x == incercari_o:
