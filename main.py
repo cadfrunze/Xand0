@@ -1,6 +1,7 @@
 
 from useri import *
 from jocul import *
+import jocul
 
 
 
