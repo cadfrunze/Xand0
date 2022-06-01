@@ -1,4 +1,5 @@
-a = ["a", "b", "c"]
+numele_meu = "Marius"
 
-b = a[2]
-print(type(b))
+numele_tau = numele_meu
+
+print(f"Te salut {numele_tau}, te urmaresc cu placere, numele meu este tot {numele_meu}")   # :))
