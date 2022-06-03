@@ -141,6 +141,7 @@ def useri():
 
 if start_signup == True:
     useri_dict = useri()
+
 time.sleep(2) 
 os.system('cls')
 print("Sa vedem cine incepe....")  
