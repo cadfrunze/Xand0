@@ -1,6 +1,4 @@
-
-from useri import useri_dict
-from useri import start_signup
+from useri import useri_dict, start_signup, useri
 import os
 
 # Creeare si rulare joc
@@ -321,6 +319,11 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
                 push_o(tabla, mark_o, useri_dict, userul_o)
                 incercari_o = incercari_o + 1
         elif game_incercari == False:
+            os.system('cls')
+            print("Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C")
+            print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
+            if useri_dict["user_X"][2] > 0 or useri_dict["user_0"][2] > 0:
+                print(f"Pana acuma scorul este: \n" + useri_dict["user_X"][0] + " : " + str(useri_dict["user_X"][2])  +  "\n" + useri_dict["user_0"][0] + " : " + str(useri_dict["user_0"][2]))
             if win_x == True:
                 if useri_dict["user_X"][2] == 1:
                         print(userul_x)
@@ -336,58 +339,84 @@ def joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, us
                     print(userul_o)
                     print(useri_dict["user_0"][0] + " " + "a castigat! si are " + str(useri_dict["user_0"][2]) + " " + "puncte")
             elif neutru == True:
+                os.system('cls')
+                print("Introdu' coordonatele (Se incepe cu randurile, respectiv 1, 2 sau 3 si apoi coloanele - A, B sau C")
+                print(f"3 > {rand3}\n2 > {rand2}\n1 > {rand1}\n       ^      ^      ^\n       A      B      C")
+                if useri_dict["user_X"][2] > 0 or useri_dict["user_0"][2] > 0:
+                    print(f"Pana acuma scorul este: \n" + useri_dict["user_X"][0] + " : " + str(useri_dict["user_X"][2])  +  "\n" + useri_dict["user_0"][0] + " : " + str(useri_dict["user_0"][2]))
                 print("Remiza!")
             return tabla
         os.system('cls')
 
-# Afisare castigator sau remiza
-# def castigatori(useri_dict, userul_x, userul_o):
-#     if useri_dict["user_X"][2] > useri_dict["user_0"][2]:
-#         if useri_dict["user_X"][2] == 1:
-#             print(userul_x)
-#             print(useri_dict["user_X"][0] + " " + "a castigat! si are " + str(useri_dict["user_X"][2]) + " " + "punct")
-#         else:
-#             print(userul_x)
-#             print(useri_dict["user_X"][0] + " " + "a castigat! si are " + str(useri_dict["user_X"][2]) + " " + "puncte")
-#     elif useri_dict["user_0"][2] > useri_dict["user_X"][2]:
-#         if useri_dict["user_0"][2] == 1:
-#             print(userul_o)
-#             print(useri_dict["user_0"][0] + " " + "a castigat! si are " + str(useri_dict["user_0"][2]) + " " + "punct")
-#         else:
-#             print(userul_o)
-#             print(useri_dict["user_0"][0] + " " + "a castigat! si are " + str(useri_dict["user_0"][2]) + " " + "puncte")
-#     else:
-#         remiza = "Remiza"
-#         remiza = remiza.center(30, "*")
-#         print(remiza)
-#         print("scor: " + str(useri_dict["user_X"][2]) + " >>> " + useri_dict["user_X"][0])
-#         print("scor: " + str(useri_dict["user_0"][2]) + " >>> " + useri_dict["user_0"][0])
-
-
-
-
-
 
 final_game = True
-raspuns = ""
+raspuns = "prim_joc"
 while final_game == True:
-    if start_signup == True and raspuns == "":
+    if start_signup == True and raspuns == "prim_joc":
         joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, userul_o)
-        # castigatori(useri_dict, userul_x, userul_o)
         print("1. Doresti sa joci in continuare?. Scrie \"1\" >>> \n2. Doresti sa resetezi scorul?. Scrie \"2\" >>> \n3. Doresti sa resetezi si sa innregistrezi playeri noi? >>> \n4. Doresti sa iesi din joc?. Scrie \"da\", \"3\" sau \"x\" >>> ")
         raspuns = input("Raspunde aici >>> ")
     elif raspuns == "1":
+        start_signup = False
+        useri_dict["user_X"][3] = []
+        useri_dict["user_0"][3] = []
         rand3 = ["[_]", "[_]", "[_]"]
         rand2 = ["[_]", "[_]", "[_]"]
         rand1 = ["[_]", "[_]", "[_]"]
         tabla = [rand1, rand2, rand3,]
+        mark_x = "[x]"
+        mark_o = "[o]"
+        prim_x = [mark_x, mark_x, mark_x]
+        prim_o = [mark_o, mark_o, mark_o]
+        empty_box = "[_]"
+        joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, userul_o)
+        print("1. Doresti sa joci in continuare?. Scrie \"1\" >>> \n2. Doresti sa resetezi scorul?. Scrie \"2\" >>> \n3. Doresti sa resetezi si sa innregistrezi playeri noi? >>> \n4. Doresti sa iesi din joc?. Scrie \"da\", \"3\" sau \"x\" >>> ")
+        raspuns = input("Raspunde aici >>> ")
+    elif raspuns == "2":
         start_signup = False
         useri_dict["user_X"][3] = []
         useri_dict["user_0"][3] = []
-        joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, userul_o)
-        # castigatori(useri_dict, userul_x, userul_o)
-        print("1. Doresti sa joci in continuare?. Scrie \"1\" >>> \n2. Doresti sa resetezi jocul si sa innregistrezi playeri noi?. Scrie \"2\" >>> \n3. Doresti sa iesi din joc?. Scrie \"da\", \"3\" sau \"x\" >>> ")
+        useri_dict["user_X"][2] = 0
+        useri_dict["user_0"][2] = 0
+        rand3 = ["[_]", "[_]", "[_]"]
+        rand2 = ["[_]", "[_]", "[_]"]
+        rand1 = ["[_]", "[_]", "[_]"]
+        tabla = [rand1, rand2, rand3,]
+        mark_x = "[x]"
+        mark_o = "[o]"
+        prim_x = [mark_x, mark_x, mark_x]
+        prim_o = [mark_o, mark_o, mark_o]
+        empty_box = "[_]"
+        raspuns = ""
+        print("1. Doresti sa joci in continuare?. Scrie \"1\" >>> \n2. Doresti sa resetezi scorul?. Scrie \"2\" >>> \n3. Doresti sa resetezi si sa innregistrezi playeri noi? >>> \n4. Doresti sa iesi din joc?. Scrie \"da\", \"3\" sau \"x\" >>> ")
         raspuns = input("Raspunde aici >>> ")
+    elif raspuns == "3":
+        os.system('cls')
+        useri_dict["user_X"][0] = ""
+        useri_dict["user_0"][0] = ""
+        useri_dict["user_X"][3] = []
+        useri_dict["user_0"][3] = []
+        useri_dict["user_X"][2] = 0
+        useri_dict["user_0"][2] = 0
+        rand3 = ["[_]", "[_]", "[_]"]
+        rand2 = ["[_]", "[_]", "[_]"]
+        rand1 = ["[_]", "[_]", "[_]"]
+        tabla = [rand1, rand2, rand3,]
+        mark_x = "[x]"
+        mark_o = "[o]"
+        prim_x = [mark_x, mark_x, mark_x]
+        prim_o = [mark_o, mark_o, mark_o]
+        empty_box = "[_]"
+        raspuns = "prim_joc"
+        # joc(tabla,mark_x,mark_o, prim_x, prim_o, empty_box, useri_dict, userul_x, userul_o)
+        # print("1. Doresti sa joci in continuare?. Scrie \"1\" >>> \n2. Doresti sa resetezi scorul?. Scrie \"2\" >>> \n3. Doresti sa resetezi si sa innregistrezi playeri noi? >>> \n4. Doresti sa iesi din joc?. Scrie \"da\", \"3\" sau \"x\" >>> ")
+        # raspuns = input("Raspunde aici >>> ")
+
+        
+
+
+
+
 
                
         
